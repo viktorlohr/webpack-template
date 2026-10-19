@@ -3,7 +3,7 @@ import path from "node:path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
 export default {
-  entry: "./src/index.js",
+  entry: "./src/index.ts",
   output: {
     filename: "main.js",
     path: path.resolve(import.meta.dirname, "dist"),
@@ -18,6 +18,11 @@ export default {
   module: {
     rules: [
       {
+        test: /\.ts$/i,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
+      {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },
@@ -30,5 +35,8 @@ export default {
         type: "asset/resource",
       },
     ],
+  },
+  resolve: {
+    extensions: [".ts", ".js"],
   },
 };

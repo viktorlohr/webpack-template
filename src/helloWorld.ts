@@ -4,6 +4,7 @@ export function helloWorld() {
   console.log("Hello, World!");
 
   const contentEl = document.getElementById("content");
+  if (!contentEl) throw new Error("#content element not found");
 
   const helloWorldEl = document.createElement("div");
 
